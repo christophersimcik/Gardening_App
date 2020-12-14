@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:overlay="http://schemas.android.com/apk/res-auto">
+    <data>
+    </data>
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/index_hi_lite_circle_green"
+        app:layoutDescription="@xml/map_fragment_scene">
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/map_view"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:cameraZoom="0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.csimcik.gardeningBuddy.custom.ui.MapOverlay
+            android:id="@+id/map_overlay"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            overlay:rippleColor="@color/default_text" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/map_home_fab"
+            android:layout_width="@dimen/map_home_fab_sz"
+            android:layout_height="@dimen/map_home_fab_sz"
+            android:layout_margin="@dimen/map_home_fab_margin"
+            android:background="@drawable/round_button_with_border"
+            android:padding="@dimen/round_button_with_border_padding"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/home"
+            app:tint="@color/round_button_with_border" />
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+</layout>

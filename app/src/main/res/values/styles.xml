@@ -1,0 +1,30 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="PlantItemHolderTextView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:duplicateParentState">true</item>
+        <item name="android:paddingStart">@dimen/padding_7dp</item>
+        <item name="android:paddingEnd">@dimen/padding_7dp</item>
+        <item name="android:gravity">start|center_vertical</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:autoSizeTextType">uniform</item>
+        <item name="android:autoSizeStepGranularity">1sp</item>
+        <item name="android:autoSizeMinTextSize">1sp</item>
+        <item name="android:autoSizeMaxTextSize">100sp</item>
+        <item name="android:textColor">@color/button_color_selector_black_to_light_gray</item>
+    </style>
+
+    <style name="TracerStyleLoadingView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">25dp</item>
+    </style>
+</resources>

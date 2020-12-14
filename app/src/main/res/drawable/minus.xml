@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:gravity="center"
+        android:width="@dimen/plus_minus_bar_sz">
+        <shape android:shape="line">
+            <stroke
+                android:width="@dimen/plus_minus_stroke_width"
+                android:color="@color/button_color_selector_text_gray_light_gray" />
+        </shape>
+    </item>
+</layer-list>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="plant"
+            type="com.csimcik.gardeningBuddy.models.plantDetail.PlantDetail"/>
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="@drawable/border"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/toxicity_image"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="5dp"
+        android:src="@drawable/toxicity_color"
+        app:layout_constraintStart_toStartOf="@id/start_guideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/toxicity_label"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_margin="5dp"
+        android:gravity="center_vertical"
+        android:text="@string/toxicity"
+        android:textSize="@dimen/sm_text"
+        android:tint="@color/default_text"
+        app:layout_constraintBottom_toBottomOf="@id/toxicity_image"
+        app:layout_constraintStart_toEndOf="@id/toxicity_image"
+        app:layout_constraintTop_toTopOf="@id/toxicity_image" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/toxicity"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_margin="5dp"
+        android:gravity="center_vertical"
+        android:text="@{plant.mainSpecies.specifications.toxicity ?? @string/unknown}"
+        android:textColor="@{plant.mainSpecies.specifications.toxicity.isEmpty() ? @color/default_text : @color/mid_gray}"
+        android:style='@{plant.mainSpecies.specifications.toxicity == null ? "italic" : "bold"}'
+        android:textSize="@dimen/sm_text"
+        android:tint="@color/default_text"
+        app:layout_constraintBottom_toBottomOf="@id/toxicity_image"
+        app:layout_constraintStart_toEndOf="@id/toxicity_label"
+        app:layout_constraintTop_toTopOf="@id/toxicity_image" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guidline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="7dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

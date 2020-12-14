@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Map Input Feedback View -->
+    <declare-styleable name="MapOverlay">
+        <attr name="rippleColor" format="color" />
+    </declare-styleable>
+
+    <!-- Meter View -->
+    <declare-styleable name="MeterView">
+        <attr name="radius" format="dimension" />
+        <attr name="speed" format="enum">
+            <enum name="slow" value="2000" />
+            <enum name="medium" value="1000" />
+            <enum name="fast" value="500" />
+        </attr>
+        <attr name="strokeWidth" format="dimension" />
+        <attr name="innerColor" format="color" />
+        <attr name="outerColor" format="color" />
+        <attr name="max" format="integer" />
+        <attr name="paddingStart" format="dimension" />
+        <attr name="paddingEnd" format="dimension" />
+        <attr name="paddingTop" format="dimension" />
+        <attr name="paddingBottom" format="dimension" />
+    </declare-styleable>
+
+    <!-- Custom Auto Sizing Edit Text -->
+    <declare-styleable name="AutoSizeEditTextView">
+        <attr name="minSz" format="dimension" />
+        <attr name="maxSz" format="dimension" />
+    </declare-styleable>
+
+    <!-- Tracer Style Loading View -->
+    <declare-styleable name="LoadingTracerView">
+        <attr name="headColor" format="color" />
+        <attr name="tailColor" format="color" />
+        <attr name="headAlpha" format="integer" />
+        <attr name="starting_direction" format="enum">
+            <enum name="left_to_right" value="1" />
+            <enum name="right_to_left" value="0" />
+        </attr>
+    </declare-styleable>
+</resources>

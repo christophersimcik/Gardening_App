@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:meter="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="plant"
+            type="com.csimcik.gardeningBuddy.models.plantDetail.PlantDetail"/>
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/border">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/humidity_image"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="5dp"
+        android:src="@drawable/humidity_color"
+        app:layout_constraintStart_toStartOf="@id/start_guideline"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/humidity_label"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_margin="5dp"
+        android:gravity="center_vertical"
+        android:text="@string/humidity"
+        android:textSize="@dimen/sm_text"
+        android:tint="@color/default_text"
+        app:layout_constraintBottom_toBottomOf="@id/humidity_image"
+        app:layout_constraintStart_toEndOf="@id/humidity_image"
+        app:layout_constraintTop_toTopOf="@id/humidity_image" />
+
+    <com.csimcik.gardeningBuddy.custom.ui.MeterView
+        android:id="@+id/humidity_meter"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="5dp"
+        meter:max="10"
+        meter:speed="medium"
+        meter:radius="8dp"
+        meter:innerColor="@color/LightSkyBlue"
+        meter:outerColor="@color/default_text"
+        meter:strokeWidth="2dp"
+        meter:position="@{plant.mainSpecies.growth.atmospheric_humidity ?? -1}"
+        app:layout_constraintBottom_toBottomOf="@id/humidity_image"
+        app:layout_constraintStart_toEndOf="@id/humidity_label"
+        app:layout_constraintTop_toTopOf="@id/humidity_image"
+        app:layout_constraintEnd_toEndOf="@id/end_guideline"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/start_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/end_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_guidline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="7dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

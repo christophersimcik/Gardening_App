@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:startDestination="@id/queryFragment">
+
+    <fragment
+        android:id="@+id/familiesFragment"
+        android:name="com.csimcik.gardeningBuddy.fragments.FamiliesFragment"
+        android:label="FamiliesFragment" >
+        <action
+            android:id="@+id/action_familiesFragment_to_plantsFragment"
+            app:destination="@id/plantsFragment" />
+        <action
+            android:id="@+id/action_familiesFragment_to_queryFragment"
+            app:destination="@id/queryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/plantsFragment"
+        android:name="com.csimcik.gardeningBuddy.fragments.PlantsFragment"
+        android:label="PlantsFragment" >
+        <action
+            android:id="@+id/action_plantsFragment_to_plantDetailFragment"
+            app:destination="@id/plantDetailFragment" />
+        <action
+            android:id="@+id/action_plantsFragment_to_queryFragment"
+            app:destination="@id/queryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/plantDetailFragment"
+        android:name="com.csimcik.gardeningBuddy.fragments.PlantDetailFragment"
+        android:label="PlantDetailFragment" >
+        <argument
+            android:name="url"
+            app:argType="string"
+            android:defaultValue='""' />
+        <action
+            android:id="@+id/action_plantDetailFragment_to_queryFragment"
+            app:destination="@id/queryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/queryFragment"
+        android:name="com.csimcik.gardeningBuddy.fragments.SearchFragment"
+        android:label="QueryFragment" >
+        <action
+            android:id="@+id/action_queryFragment_to_plantsFragment"
+            app:destination="@id/plantsFragment" />
+        <action
+            android:id="@+id/action_queryFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+        <action
+            android:id="@+id/action_queryFragment_to_mapFragment2"
+            app:destination="@id/mapFragment" />
+        <action
+            android:id="@+id/action_queryFragment_to_familiesFragment"
+            app:destination="@id/familiesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.csimcik.gardeningBuddy.fragments.MapFragment"
+        android:label="MapFragment" >
+        <action
+            android:id="@+id/action_mapFragment_to_queryFragment"
+            app:destination="@id/queryFragment" />
+    </fragment>
+</navigation>

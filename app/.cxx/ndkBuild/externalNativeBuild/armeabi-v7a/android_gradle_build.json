@@ -1,0 +1,34 @@
+{
+  "buildFiles": [
+    "C:\\Users\\chris\\Desktop\\GardeningBuddy\\app\\src\\main\\jni\\Android.mk",
+    "C:\\Users\\chris\\Desktop\\GardeningBuddy\\app\\src\\main\\jni\\Application.mk"
+  ],
+  "cleanCommands": [
+    "C:\\Users\\chris\\AppData\\Local\\Android\\Sdk\\ndk\\21.0.6113669\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dC:\\Users\\chris\\Desktop\\GardeningBuddy\\app\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dC:\\Users\\chris\\Desktop\\GardeningBuddy\\app\\src\\main\\jni\\Application.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-26 NDK_OUT\u003dC:/Users/chris/Desktop/GardeningBuddy/app/build/intermediates/ndkBuild/externalNativeBuild/obj NDK_LIBS_OUT\u003dC:\\Users\\chris\\Desktop\\GardeningBuddy\\app\\build\\intermediates\\ndkBuild\\externalNativeBuild\\lib clean"
+  ],
+  "buildTargetsCommand": "C:\\Users\\chris\\AppData\\Local\\Android\\Sdk\\ndk\\21.0.6113669\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dC:\\Users\\chris\\Desktop\\GardeningBuddy\\app\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dC:\\Users\\chris\\Desktop\\GardeningBuddy\\app\\src\\main\\jni\\Application.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-26 NDK_OUT\u003dC:/Users/chris/Desktop/GardeningBuddy/app/build/intermediates/ndkBuild/externalNativeBuild/obj NDK_LIBS_OUT\u003dC:\\Users\\chris\\Desktop\\GardeningBuddy\\app\\build\\intermediates\\ndkBuild\\externalNativeBuild\\lib {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "keys-externalNativeBuild-armeabi-v7a": {
+      "buildCommand": "C:\\Users\\chris\\AppData\\Local\\Android\\Sdk\\ndk\\21.0.6113669\\ndk-build.cmd NDK_PROJECT_PATH\u003dnull APP_BUILD_SCRIPT\u003dC:\\Users\\chris\\Desktop\\GardeningBuddy\\app\\src\\main\\jni\\Android.mk NDK_APPLICATION_MK\u003dC:\\Users\\chris\\Desktop\\GardeningBuddy\\app\\src\\main\\jni\\Application.mk APP_ABI\u003darmeabi-v7a NDK_ALL_ABIS\u003darmeabi-v7a NDK_DEBUG\u003d0 APP_PLATFORM\u003dandroid-26 NDK_OUT\u003dC:/Users/chris/Desktop/GardeningBuddy/app/build/intermediates/ndkBuild/externalNativeBuild/obj NDK_LIBS_OUT\u003dC:\\Users\\chris\\Desktop\\GardeningBuddy\\app\\build\\intermediates\\ndkBuild\\externalNativeBuild\\lib C:/Users/chris/Desktop/GardeningBuddy/app/build/intermediates/ndkBuild/externalNativeBuild/obj/local/armeabi-v7a/libkeys.so",
+      "toolchain": "toolchain-armeabi-v7a",
+      "abi": "armeabi-v7a",
+      "artifactName": "keys",
+      "files": [
+        {
+          "src": "C:\\Users\\chris\\Desktop\\GardeningBuddy\\app\\src\\main\\jni\\keys.c",
+          "flags": "-target armv7-none-linux-androideabi26 -fdata-sections -ffunction-sections -fstack-protector-strong -funwind-tables -no-canonical-prefixes --sysroot C:/Users/chris/AppData/Local/Android/Sdk/ndk/21.0.6113669/build//../toolchains/llvm/prebuilt/windows-x86_64/sysroot -g -Wno-invalid-command-line-argument -Wno-unused-command-line-argument -D_FORTIFY_SOURCE\u003d2 -fpic -march\u003darmv7-a -mthumb -Oz -DNDEBUG -IC:/Users/chris/Desktop/GardeningBuddy/app/src/main/jni -DANDROID -Wformat -Werror\u003dformat-security"
+        }
+      ],
+      "output": "C:\\Users\\chris\\Desktop\\GardeningBuddy\\app\\build\\intermediates\\ndkBuild\\externalNativeBuild\\obj\\local\\armeabi-v7a\\libkeys.so"
+    }
+  },
+  "toolchains": {
+    "toolchain-armeabi-v7a": {
+      "cCompilerExecutable": "C:\\Users\\chris\\AppData\\Local\\Android\\Sdk\\ndk\\21.0.6113669\\build\\..\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe"
+    }
+  },
+  "cFileExtensions": [
+    "c"
+  ],
+  "cppFileExtensions": []
+}

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="query"
+            type="String" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/loading_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="25dp">
+
+        <com.csimcik.gardeningBuddy.custom.ui.LoadingTracerView
+            android:id="@+id/loading_image_top"
+            style="@style/TracerStyleLoadingView"
+            app:headAlpha="125"
+            app:headColor="@color/Snow"
+            app:layout_constraintBottom_toTopOf="@id/loading_text"
+            app:layout_constraintEnd_toEndOf="@id/loading_text"
+            app:layout_constraintStart_toStartOf="@id/loading_text"
+            app:starting_direction="left_to_right"
+            app:tailColor="@android:color/transparent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/loading_text"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:autoSizeMaxTextSize="100sp"
+            android:autoSizeMinTextSize="1sp"
+            android:autoSizeTextType="uniform"
+            android:gravity="center"
+            android:layout_marginTop="25dp"
+            android:layout_marginBottom="25dp"
+            android:paddingStart="@dimen/loading_text_padding"
+            android:paddingEnd="@dimen/loading_text_padding"
+            android:maxLines="1"
+            android:text="@{String.format(@string/searching, query)}"
+            android:textColor="@color/light_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.csimcik.gardeningBuddy.custom.ui.LoadingTracerView
+            android:id="@+id/loading_image_bottom"
+            style="@style/TracerStyleLoadingView"
+            app:headAlpha="125"
+            app:headColor="@color/Snow"
+            app:layout_constraintEnd_toEndOf="@id/loading_text"
+            app:layout_constraintStart_toStartOf="@id/loading_text"
+            app:layout_constraintTop_toBottomOf="@id/loading_text"
+            app:starting_direction="right_to_left"
+            app:tailColor="@android:color/transparent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

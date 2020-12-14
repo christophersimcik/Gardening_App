@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="plant"
+            type="com.csimcik.gardeningBuddy.models.plantDetail.PlantDetail" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/scientific_family_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start|center_vertical"
+            android:text="@string/family"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintStart_toStartOf="@id/start_guideline"
+            app:layout_constraintTop_toTopOf="@id/top_guidline" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/family_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start|center_vertical"
+            android:text="@{plant.family.name}"
+            android:textColor="@color/default_text"
+            android:textSize="@dimen/large_text"
+            android:textStyle="bold"
+            app:autoSizeMaxTextSize="@dimen/large_text"
+            app:autoSizeMinTextSize="1sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintStart_toStartOf="@id/start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/scientific_family_label" />
+
+        <View
+            android:id="@+id/family_name_divider"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/divider_height"
+            android:layout_marginBottom="@dimen/divider_bottom_margin"
+            android:background="@color/light_gray"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintStart_toStartOf="@id/start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/family_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/common_family_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/label_margin_top"
+            android:gravity="start|center_vertical"
+            android:text="@string/common_family_name"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintStart_toStartOf="@id/start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/family_name_divider" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/common_family_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start|center_vertical"
+            android:text="@{plant.family.common_name}"
+            android:textColor="@color/default_text"
+            android:textSize="@dimen/med_text"
+            android:textStyle="bold"
+            app:autoSizeMaxTextSize="@dimen/large_text"
+            app:autoSizeMinTextSize="1sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintStart_toStartOf="@id/start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/common_family_label" />
+
+        <View
+            android:id="@+id/common_family_name_divider"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/divider_height"
+            android:layout_marginBottom="@dimen/divider_bottom_margin"
+            android:background="@color/light_gray"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintStart_toStartOf="@id/start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/common_family_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/genus_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/label_margin_top"
+            android:gravity="start|center_vertical"
+            android:text="@string/genus"
+            app:autoSizeMaxTextSize="@dimen/large_text"
+            app:autoSizeMinTextSize="1sp"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintStart_toStartOf="@id/start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/common_family_name_divider" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/genus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="start|center_vertical"
+            android:text="@{plant.genus.name}"
+            android:textColor="@color/default_text"
+            android:textSize="@dimen/med_text"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintStart_toStartOf="@id/start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/genus_label" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/top_guidline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="7dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/start_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/end_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="20dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

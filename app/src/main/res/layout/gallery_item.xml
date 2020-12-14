@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+<com.csimcik.gardeningBuddy.custom.ui.SaturationAppCompatImageView
+    android:layout_width="@dimen/plant_detail_thumb"
+    android:layout_height="@dimen/plant_detail_thumb"
+    android:id="@+id/image"
+    android:background="@drawable/border"
+    android:layout_gravity="center"
+    android:padding="3dp" />
+</LinearLayout>
+</layout>

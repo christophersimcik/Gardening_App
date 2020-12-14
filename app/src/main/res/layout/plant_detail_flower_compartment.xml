@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="plant"
+            type="com.csimcik.gardeningBuddy.models.plantDetail.PlantDetail"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/header_flower"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border"
+        android:padding="5dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/flower_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/flower_icon"
+            android:tint="@color/default_text"
+            app:layout_constraintBottom_toTopOf="@id/header_flower_divider"
+            app:layout_constraintStart_toStartOf="@id/start_guideline"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/flower_label"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:gravity="center_vertical"
+            android:text="@string/flower"
+            android:textSize="@dimen/sm_text"
+            app:layout_constraintBottom_toBottomOf="@id/flower_icon"
+            app:layout_constraintStart_toEndOf="@+id/flower_icon"
+            app:layout_constraintTop_toTopOf="@id/flower_icon" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/conspicuous_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center_vertical"
+            android:text="@string/conspicuous"
+            android:textSize="@dimen/compartment_text_sz"
+            app:layout_constraintBottom_toBottomOf="@id/images_icon"
+            app:layout_constraintEnd_toStartOf="@id/flower_conspicuous_checkbox"
+            app:layout_constraintTop_toTopOf="@id/images_icon" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/flower_conspicuous_checkbox"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:src="@{plant.mainSpecies.flower.conspicuous ? false ? @drawable/x : @drawable/check : @drawable/n_a}"
+            android:tint="@{plant.mainSpecies.flower.conspicuous ? false ? @color/active_red_orange : @color/index_hi_lite_circle_green : @color/light_gray}"
+            app:layout_constraintBottom_toBottomOf="@id/flower_icon"
+            app:layout_constraintEnd_toStartOf="@id/images_icon"
+            app:layout_constraintTop_toTopOf="@id/images_icon" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/images_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/images_icon"
+            android:tint="@color/button_color_selector_black_to_light_gray"
+            app:layout_constraintBottom_toBottomOf="@id/flower_icon"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintTop_toTopOf="@id/flower_icon" />
+
+        <View
+            android:id="@+id/header_flower_divider"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/divider_height"
+            android:layout_marginBottom="@dimen/divider_bottom_margin"
+            android:background="@color/light_gray"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintStart_toStartOf="@id/start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/images_icon" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/colors_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center_vertical"
+            android:padding="@dimen/padding_3dp"
+            android:text="@string/colors"
+            android:textSize="@dimen/compartment_text_sz"
+            app:layout_constraintBottom_toBottomOf="@+id/flower_color_view"
+            app:layout_constraintStart_toStartOf="@id/start_guideline"
+            app:layout_constraintTop_toTopOf="@+id/flower_color_view" />
+
+        <com.csimcik.gardeningBuddy.custom.ui.ColorsView
+            android:id="@+id/flower_color_view"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/colors_label"
+            app:layout_constraintTop_toBottomOf="@+id/header_flower_divider" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/start_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/end_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/top_guidline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="7dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

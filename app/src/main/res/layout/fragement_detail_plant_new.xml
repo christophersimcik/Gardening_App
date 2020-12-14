@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="plant"
+            type="com.csimcik.gardeningBuddy.models.plantDetail.PlantDetail" />
+        <variable
+            name="plant_name"
+            type="String" />
+        <variable
+            name="viewModel"
+            type="com.csimcik.gardeningBuddy.viewModels.PlantDetailViewModel" />
+    </data>
+
+    <FrameLayout
+        android:id="@+id/root_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/index_hi_lite_circle_green">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_10dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/root_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <include
+                    android:id="@+id/names_compartment"
+                    layout="@layout/plant_detail_names_compartment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    bind:plant="@{plant}" />
+
+                <include
+                    android:id="@+id/flower_compartment"
+                    layout="@layout/plant_detail_flower_compartment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/names_compartment"
+                    bind:plant="@{plant}" />
+
+                <include
+                    android:id="@+id/foliage_compartment"
+                    layout="@layout/plant_detail_foliage_compartment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/flower_compartment"
+                    bind:plant="@{plant}" />
+
+                <include
+                    android:id="@+id/fruit_and_seed_compartment"
+                    layout="@layout/plant_detail_fruit_and_seed_compartment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/foliage_compartment"
+                    bind:plant="@{plant}" />
+
+                <include
+                    android:id="@+id/toxicity_compartment"
+                    layout="@layout/plant_detail_toxicity_compartment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fruit_and_seed_compartment"
+                    bind:plant="@{plant}" />
+
+                <include
+                    android:id="@+id/edible_compartment"
+                    layout="@layout/plant_detail_edible_compartment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/toxicity_compartment"
+                    bind:plant="@{plant}" />
+
+                <include
+                    android:id="@+id/light_compartment"
+                    layout="@layout/plant_detail_light_compartment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/edible_compartment"
+                    bind:plant="@{plant}" />
+
+                <include
+                    android:id="@+id/humidity_compartment"
+                    layout="@layout/plant_detail_humidity_compartment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/light_compartment"
+                    bind:plant="@{plant}" />
+
+                <include
+                    android:id="@+id/distribution_compartment"
+                    layout="@layout/plant_detail_distribution_compartment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/humidity_compartment"
+                    bind:viewModel="@{viewModel}"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <include
+            android:id="@+id/plant_detail_loading_screen"
+            layout="@layout/plants_loading_block"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            bind:query="@{plant_name}"/>
+
+    </FrameLayout>
+</layout>
+

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners
+        android:topLeftRadius="@dimen/family_item_view_radius"
+        android:topRightRadius="@dimen/family_item_view_radius"/>
+    <solid android:color="@color/index_hi_lite_circle_green" />
+    <stroke
+        android:width="@dimen/rounded_border"
+        android:color="@color/Black" />
+</shape>

@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">Gardening_Buddy</string>
+    <string name="not_available">n/a</string>
+    <string name="synonyms"><i>Synonyms:</i></string>
+    <!-- Alphabet Index -->
+    <string name="alphabet">A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z</string>
+
+    <!--State Message-->
+    <string name="invalid_search"><b>Sorry, Invalid Search :(</b></string>
+    <string name="searching"><b>Searching %1$s</b></string>
+    <string name="no_plants_found"><b>No Plants Found :(</b></string>
+
+    <!--Map-->
+    <string name='you'><b>You</b></string>
+    <string name='last_location'><b>Searched</b></string>
+    <string name='no_distribution_data'><b>No Distribution Data Available</b></string>
+
+    <!--Plants-->
+    <string name="family"><i>Family Name:</i></string>
+    <string name="common_family_name"><i>Common Family Name:</i></string>
+    <string name="scientific_name"><i>Scientific Name:</i></string>
+    <string name="common_name"><i>Common Name:</i></string>
+    <string name="genus"><i>Genus Name:</i></string>
+    <string name="family_and_genus_names"><i>Family and Genus</i></string>
+    <string name="flower"><b>Flower</b></string>
+    <string name="foliage"><b>Foliage</b></string>
+    <string name="fruit_and_seed"><b>Fruit &amp; Seed</b></string>
+    <string name="conspicuous"><b>Conspicuous:</b></string>
+    <string name="colors">Colors:</string>
+    <string name="texture">Texture:</string>
+    <string name="retention">Foliage is</string>
+    <string name="shape">Shape:</string>
+    <string name="persistence">Fruit is </string>
+    <string name="edible"><b>Edible:</b></string>
+    <string name="toxicity"><b>Toxicity:</b></string>
+    <string name="light_level"><b>Light:</b></string>
+    <string name="humidity"><b>Humidity:</b></string>
+    <string name="distributions"><b>Distribution</b></string>
+    <string name="native_label"><i>Native</i></string>
+    <string name="introduced_label"><i>Introduced</i></string>
+    <string name="unknown">Unknown</string>
+    <string name="deciduous">Deciduous</string>
+    <string name="evergreen">Evergreen</string>
+    <string name="persistent"><b>Persistent</b></string>
+    <string name="no_images">Sorry, No Images Available</string>
+    <string name='search'><u>Search</u></string>
+    <string name='map_search'>Search <b>%1$s</b></string>
+
+</resources>

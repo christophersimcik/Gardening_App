@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@id/gallery_detail"
+            android:layout_width="@dimen/plant_detail_thumb"
+            android:layout_height="@dimen/plant_detail_thumb"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/padding_10dp"
+            android:background="@null"
+            android:padding="2dp"
+            android:scaleType="centerInside"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/end_guide"
+            app:layout_constraintStart_toStartOf="@id/start_guide"
+            app:layout_constraintTop_toBottomOf="@id/header" />
+    </ConstraintSet>
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@id/gallery_detail"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/padding_10dp"
+            android:background="@null"
+            android:padding="2dp"
+            android:scaleType="fitCenter"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/end_guide"
+            app:layout_constraintStart_toStartOf="@id/start_guide"
+            app:layout_constraintTop_toBottomOf="@id/header" />
+    </ConstraintSet>
+
+    <Transition
+        app:constraintSetEnd="@id/end"
+        app:constraintSetStart="@+id/start"
+        app:duration="1000"
+        android:id="@+id/enlarge" />
+</MotionScene>

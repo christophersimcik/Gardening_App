@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="@drawable/border"
+    android:padding="@dimen/padding_10dp">
+
+    <com.csimcik.gardeningBuddy.custom.ui.SaturationAppCompatImageView
+        android:id="@+id/plant_image"
+        android:layout_width="@dimen/plant_thumb_dimen"
+        android:layout_height="@dimen/plant_thumb_dimen"
+        android:background="@drawable/border"
+        android:duplicateParentState="true"
+        android:padding="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/scientific_name_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:duplicateParentState="true"
+        android:gravity="start|center_vertical"
+        android:paddingStart="@dimen/padding_7dp"
+        android:paddingEnd="@dimen/padding_7dp"
+        android:text="@string/scientific_name"
+        android:textColor="@color/button_color_selector_black_to_light_gray"
+        app:layout_constraintEnd_toStartOf="@id/plant_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/scientific_name"
+        app:layout_constraintEnd_toStartOf="@id/plant_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scientific_name_label"
+        style="@style/PlantItemHolderTextView"/>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/more_info_button"
+        android:layout_width="@dimen/plus_minus_button_sz"
+        android:layout_height="@dimen/plus_minus_button_sz"
+        android:background="@drawable/plus_minus_light_selector"
+        android:duplicateParentState="true"
+        android:paddingStart="@dimen/padding_7dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scientific_name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/synonyms_header"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/plus_minus_button_sz"
+        android:duplicateParentState="true"
+        android:gravity="center"
+        android:text="@string/synonyms"
+        android:textColor="@color/button_color_selector_black_to_light_gray"
+        android:textSize="@dimen/tiny_text"
+        app:layout_constraintStart_toEndOf="@id/more_info_button"
+        app:layout_constraintTop_toBottomOf="@id/scientific_name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/synonyms"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:duplicateParentState="true"
+        android:gravity="start|center_vertical"
+        android:paddingStart="@dimen/padding_7dp"
+        android:paddingEnd="@dimen/padding_7dp"
+        android:textColor="@color/button_color_selector_black_to_light_gray"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@id/plant_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/more_info_button" />
+
+    <View
+        android:id="@+id/name_divider"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/divider_height"
+        android:layout_marginStart="@dimen/divider_start_margin"
+        android:layout_marginEnd="@dimen/divider_end_margin"
+        android:background="@color/light_gray"
+        android:duplicateParentState="true"
+        app:layout_constraintEnd_toStartOf="@id/plant_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/synonyms" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/common_name_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/label_margin_top"
+        android:duplicateParentState="true"
+        android:gravity="start|center_vertical"
+        android:paddingStart="@dimen/padding_7dp"
+        android:paddingEnd="@dimen/padding_7dp"
+        android:text="@string/common_name"
+        android:textColor="@color/button_color_selector_black_to_light_gray"
+        app:layout_constraintEnd_toStartOf="@id/plant_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name_divider" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/common_name"
+        style="@style/PlantItemHolderTextView"
+        app:layout_constraintEnd_toStartOf="@id/plant_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/common_name_label" />
+
+    <View
+        android:id="@+id/common_name_divider"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/divider_height"
+        android:layout_marginStart="@dimen/divider_start_margin"
+        android:layout_marginEnd="@dimen/divider_end_margin"
+        android:layout_marginBottom="@dimen/divider_bottom_margin"
+        android:background="@color/light_gray"
+        android:duplicateParentState="true"
+        app:layout_constraintEnd_toStartOf="@id/plant_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/common_name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/scientific_family_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/label_margin_top"
+        android:duplicateParentState="true"
+        android:gravity="start|center_vertical"
+        android:paddingStart="@dimen/padding_7dp"
+        android:paddingEnd="@dimen/padding_7dp"
+        android:text="@string/family"
+        android:textColor="@color/button_color_selector_black_to_light_gray"
+        app:layout_constraintEnd_toStartOf="@id/plant_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/common_name_divider" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/family_name"
+        style="@style/PlantItemHolderTextView"
+        app:layout_constraintEnd_toStartOf="@id/plant_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scientific_family_label" />
+
+    <View
+        android:id="@+id/family_name_divider"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/divider_height"
+        android:layout_marginStart="@dimen/divider_start_margin"
+        android:layout_marginEnd="@dimen/divider_end_margin"
+        android:layout_marginBottom="@dimen/divider_bottom_margin"
+        android:background="@color/light_gray"
+        android:duplicateParentState="true"
+        app:layout_constraintEnd_toStartOf="@id/plant_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/family_name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/common_family_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/label_margin_top"
+        android:duplicateParentState="true"
+        android:gravity="start|center_vertical"
+        android:paddingStart="@dimen/padding_7dp"
+        android:paddingEnd="@dimen/padding_7dp"
+        android:text="@string/common_family_name"
+        android:textColor="@color/button_color_selector_black_to_light_gray"
+        app:layout_constraintEnd_toStartOf="@id/plant_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/family_name_divider" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/common_family_name"
+        app:layout_constraintEnd_toStartOf="@id/plant_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/common_family_label"
+        style="@style/PlantItemHolderTextView"/>
+
+    <View
+        android:id="@+id/common_family_name_divider"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/divider_height"
+        android:layout_marginStart="@dimen/divider_start_margin"
+        android:layout_marginEnd="@dimen/divider_end_margin"
+        android:layout_marginBottom="@dimen/divider_bottom_margin"
+        android:background="@color/light_gray"
+        android:duplicateParentState="true"
+        app:layout_constraintEnd_toStartOf="@id/plant_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/common_family_name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/genus_lable"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/label_margin_top"
+        android:duplicateParentState="true"
+        android:gravity="start|center_vertical"
+        android:paddingStart="@dimen/padding_7dp"
+        android:paddingEnd="@dimen/padding_7dp"
+        android:text="@string/genus"
+        android:textColor="@color/button_color_selector_black_to_light_gray"
+        app:layout_constraintEnd_toStartOf="@id/plant_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/common_family_name_divider" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/genus"
+        style="@style/PlantItemHolderTextView"
+        app:layout_constraintEnd_toStartOf="@id/plant_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/genus_lable" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

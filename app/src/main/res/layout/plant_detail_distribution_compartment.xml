@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="plant"
+            type="com.csimcik.gardeningBuddy.models.plantDetail.PlantDetail" />
+        <variable
+            name="viewModel"
+            type="com.csimcik.gardeningBuddy.viewModels.PlantDetailViewModel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/border">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/distribution_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="5dp"
+        android:src="@drawable/distribution"
+        android:tint="@color/default_text"
+        app:layout_constraintStart_toStartOf="@id/main_start"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/distribution_label"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:gravity="center_vertical"
+        android:text="@string/distributions"
+        android:textSize="@dimen/sm_text"
+        app:layout_constraintBottom_toBottomOf="@id/distribution_icon"
+        app:layout_constraintStart_toEndOf="@id/distribution_icon"
+        app:layout_constraintTop_toTopOf="@id/distribution_icon" />
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/radio_group_margin_end"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/distribution_icon"
+        app:layout_constraintEnd_toEndOf="@id/main_end"
+        app:layout_constraintTop_toTopOf="@id/distribution_icon">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/native_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/index_hi_lite_circle_green"
+            android:checked="true"
+            android:text="@string/native_label"
+            android:textColor="@color/default_text"
+            android:textSize="@dimen/tiny_text" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/introduced_radio_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/index_hi_lite_circle_green"
+            android:text="@string/introduced_label"
+            android:textColor="@color/default_text"
+            android:textSize="@dimen/tiny_text" />
+    </RadioGroup>
+
+    <View
+        android:id="@+id/map_divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/rounded_border"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
+        android:background="@color/Black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/distribution_icon" />
+
+    <com.csimcik.gardeningBuddy.custom.ui.RoundedFrameLayout
+        android:id="@+id/rounded_map_container"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="3dp"
+        android:clipChildren="true"
+        android:orientation="vertical"
+        android:paddingBottom="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/map_divider">
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/map"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cameraZoom="1"
+            app:liteMode="true"
+            app:mapType="normal" />
+    </com.csimcik.gardeningBuddy.custom.ui.RoundedFrameLayout>
+
+    <com.csimcik.gardeningBuddy.custom.ui.DisappearingTextView
+        android:id="@+id/no_map_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no_distribution_data"
+        app:map_text="@{viewModel.distributionLiveData}"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/main_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/main_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="20dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

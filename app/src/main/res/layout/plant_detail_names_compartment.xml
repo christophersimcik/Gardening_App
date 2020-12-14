@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="plant"
+            type="com.csimcik.gardeningBuddy.models.plantDetail.PlantDetail"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/names_compartment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/header"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintStart_toStartOf="@id/start_guideline"
+            app:layout_constraintTop_toTopOf="@id/top_guideline">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/plant_thumbnail"
+                android:layout_width="@dimen/plant_detail_thumb"
+                android:layout_height="@dimen/plant_detail_thumb"
+                android:background="@drawable/plant_detail_image_background"
+                android:padding="3dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/scientific_name_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/scientific_name"
+                app:layout_constraintBottom_toTopOf="@id/image_mid_guideline"
+                app:layout_constraintEnd_toEndOf="@id/image_start"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/scientific_name"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:gravity="start|center_vertical"
+                android:maxLines="1"
+                android:text="@{plant.slug}"
+                android:textStyle="bold"
+                android:textColor="@color/default_text"
+                android:autoSizeStepGranularity="1sp"
+                android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="1sp"
+                android:autoSizeMaxTextSize="100sp"
+                app:layout_constraintEnd_toEndOf="@id/image_start"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/scientific_name_label" />
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/more_info_button"
+                android:layout_width="@dimen/plus_minus_button_sz"
+                android:layout_height="@dimen/plus_minus_button_sz"
+                android:background="@drawable/plus_minus_light_selector"
+                android:button="@null"
+                android:checked="false"
+                android:gravity="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/scientific_name" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/synonyms_header"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/plus_minus_button_sz"
+                android:gravity="start|center_vertical"
+                android:text="@string/synonyms"
+                android:textSize="@dimen/tiny_text"
+                app:layout_constraintBottom_toBottomOf="@id/more_info_button"
+                app:layout_constraintEnd_toEndOf="@id/image_start"
+                app:layout_constraintStart_toEndOf="@id/more_info_button"
+                app:layout_constraintTop_toTopOf="@id/more_info_button" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/synonyms"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="start|center_vertical"
+                android:paddingStart="@dimen/padding_7dp"
+                android:paddingEnd="@dimen/padding_7dp"
+                android:text="@{plant.mainSpecies.listSynonyms()}"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@id/image_start"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/more_info_button" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/image_mid_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="45dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/image_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="170dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/header_divider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/rounded_border"
+            android:background="@color/Black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header" />
+
+        <include
+            android:id="@+id/common_name_layout"
+            layout="@layout/common_name_compartment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header_divider"
+            bind:plant="@{plant}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/family_and_genus_label"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/plus_minus_button_sz"
+            android:gravity="start|left|center_vertical"
+            android:text="@string/family_and_genus_names"
+            app:layout_constraintEnd_toEndOf="@id/end_guideline"
+            app:layout_constraintStart_toStartOf="@id/start_guideline"
+            app:layout_constraintTop_toBottomOf="@id/common_name_layout" />
+
+        <View
+            android:id="@+id/family_genus_divider"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/rounded_border"
+            android:background="@color/Black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/family_and_genus_label" />
+
+        <include
+            android:id="@+id/family_and_genus_compartment"
+            layout="@layout/genus_family_compartment"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/bottom_guideline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/family_genus_divider"
+            bind:plant="@{plant}" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/top_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/bottom_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_end="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/start_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="20dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/end_guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="20dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

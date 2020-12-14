@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+    </data>
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/search_motion_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/index_hi_lite_circle_green"
+        app:layoutDescription="@xml/search_dialog_scene">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/background"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:alpha=".05"
+            android:padding="25dp"
+            android:tint="@color/Black"
+            app:layout_constraintBottom_toTopOf="@id/off_center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/plant_icon_lg" />
+
+        <com.csimcik.gardeningBuddy.custom.ui.AutoSizeEditTextView
+            android:id="@+id/edit_text"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:hint="@string/search"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textColor="@color/light_background"
+            android:textColorHint="@color/LightGreen"
+            android:textSize="@dimen/large_text"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/off_center"
+            app:layout_constraintEnd_toEndOf="@+id/background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:maxSz="100dp"
+            app:minSz="1dp" />
+
+        <View
+            android:id="@+id/nav_container_view"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@color/light_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/search_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/circle"
+            android:backgroundTint="@color/light_background"
+            app:layout_constraintBottom_toBottomOf="@id/nav_container_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/nav_container_view"
+            app:srcCompat="@drawable/search"
+            app:tint="@color/radio_button_color_selector" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/search_distribution"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/circle"
+            android:backgroundTint="@color/light_background"
+            app:layout_constraintBottom_toBottomOf="@id/nav_container_view"
+            app:layout_constraintStart_toStartOf="@id/nav_container_view"
+            app:layout_constraintTop_toTopOf="@id/nav_container_view"
+            app:srcCompat="@drawable/distribution"
+            app:tint="@color/radio_button_color_selector" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/search_family"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/circle"
+            android:backgroundTint="@color/light_background"
+            app:layout_constraintBottom_toBottomOf="@id/nav_container_view"
+            app:layout_constraintStart_toEndOf="@id/search_distribution"
+            app:layout_constraintTop_toTopOf="@id/nav_container_view"
+            app:srcCompat="@drawable/classification"
+            app:tint="@color/radio_button_color_selector" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/off_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.8" />
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+</layout>
