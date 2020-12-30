@@ -16,7 +16,8 @@
     </ConstraintSet>
     <ConstraintSet android:id="@+id/end">
         <Constraint android:id="@+id/nav_container_view">
-            <Transform android:translationY="50dp" />
+            <Transform
+                android:translationY="50dp" />
         </Constraint>
         <Constraint android:id="@id/search_button">
             <Transform

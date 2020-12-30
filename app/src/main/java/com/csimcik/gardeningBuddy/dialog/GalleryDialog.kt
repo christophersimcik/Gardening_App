@@ -26,13 +26,17 @@ import com.csimcik.gardeningBuddy.enums.ImageType
 import com.csimcik.gardeningBuddy.extensions.addRoundedImageNoCrop
 import com.csimcik.gardeningBuddy.models.plantDetail.Image
 import com.csimcik.gardeningBuddy.custom.ui.GalleryItemDecoration
+import com.csimcik.gardeningBuddy.models.plantDetail.Images
 import com.github.chrisbanes.photoview.PhotoView
 
 
-class GalleryDialog(val imageType: ImageType, val data: List<Image?>) : DialogFragment(),
+class GalleryDialog() : DialogFragment(),
     GalleryAdapter.GalleryItemCallback {
+
     companion object {
         const val TAG = "GALLERY DIALOG"
+        const val IMAGE_TYPE = "IMAGE_TYPE"
+        const val IMAGES = "IMAGES"
     }
 
     private lateinit var cancel_button: AppCompatImageView
@@ -43,6 +47,9 @@ class GalleryDialog(val imageType: ImageType, val data: List<Image?>) : DialogFr
     private lateinit var msg: AppCompatTextView
     private lateinit var adapter: GalleryAdapter
     private lateinit var detail: PhotoView
+    private lateinit var type: ImageType
+    private var data: Images? = null
+    private lateinit var images: List<Image?>
 
     private val decoration = GalleryItemDecoration(GalleryAdapter.ITEM_SPACING)
 
@@ -51,7 +58,16 @@ class GalleryDialog(val imageType: ImageType, val data: List<Image?>) : DialogFr
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = GalleryAdapter(data)
+        type = arguments?.getSerializable(IMAGE_TYPE) as ImageType
+        data = arguments?.getParcelable(IMAGES) as Images?
+        images = when (type) {
+            ImageType.PLANT -> data?.habit ?: ArrayList<Image>()
+            ImageType.FOLIAGE -> data?.leaf ?: ArrayList<Image>()
+            ImageType.FLOWER -> data?.flower ?: ArrayList<Image>()
+            ImageType.FRUIT -> data?.fruit ?: ArrayList<Image>()
+            ImageType.BARK -> data?.bark ?: ArrayList<Image>()
+        }
+        adapter = GalleryAdapter(images)
 
     }
 
@@ -67,8 +83,8 @@ class GalleryDialog(val imageType: ImageType, val data: List<Image?>) : DialogFr
 
     override fun onResume() {
         super.onResume()
-        val window = dialog?.window
-        window?.let { window ->
+        val dialogWindow = dialog?.window
+        dialogWindow?.let { window ->
             val size = getScreenSize()
             val width = (size.width * .90).toInt()
             val height = (size.height * .90).toInt()
@@ -80,13 +96,13 @@ class GalleryDialog(val imageType: ImageType, val data: List<Image?>) : DialogFr
     }
 
     private fun initiateViews(binding: GalleryDialogBinding) {
-        binding.type = imageType
+        binding.type = type
         recyclerView = binding.galleryRecyclerView
         setUpRecyclerView()
         header = binding.header
         detail = binding.galleryDetail
         msg = binding.noImagesText
-        if (data.isNotEmpty()) msg.visibility = View.GONE
+        if (images.isNotEmpty()) msg.visibility = View.GONE
         motionlayout = binding.galleryMotionLayout
         cancel_button = binding.cancelButton.also {
             it.setOnClickListener { view ->
@@ -103,7 +119,7 @@ class GalleryDialog(val imageType: ImageType, val data: List<Image?>) : DialogFr
     }
 
     private fun determineSpan(): Int {
-        return if (data.size > 1) 2 else 1
+        return if (images.size > 1) 2 else 1
     }
 
     private fun getScreenSize(): Size {

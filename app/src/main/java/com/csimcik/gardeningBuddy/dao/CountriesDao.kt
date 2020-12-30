@@ -20,4 +20,5 @@ interface CountriesDao {
 
     @Query("DELETE FROM Country")
     suspend fun nukeTable()
+    
 }

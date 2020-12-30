@@ -2,6 +2,7 @@ package com.csimcik.gardeningBuddy.dialog
 
 import android.animation.Animator
 import android.animation.ValueAnimator
+import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
 import android.graphics.Color
@@ -18,9 +19,10 @@ import androidx.fragment.app.Fragment
 import com.csimcik.gardeningBuddy.R
 import com.csimcik.gardeningBuddy.databinding.MapDialogBinding
 
-class MapDialog(val country: String) : DialogFragment() {
+class MapDialog() : DialogFragment() {
     companion object {
         const val TAG = "MAP DIALOG"
+        const val COUNTRY_NAME = "COUNTRY_NAME"
         const val MIN_SCALE = 1f
         const val MAX_SCALE = 1.25f
         const val DURATION = 250L
@@ -32,6 +34,12 @@ class MapDialog(val country: String) : DialogFragment() {
     private lateinit var confirmButton: AppCompatImageButton
     private lateinit var cancelButton: AppCompatImageButton
     private lateinit var listener: DialogCallback
+    private var selectedCountryName = ""
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        selectedCountryName = arguments?.getString(COUNTRY_NAME) ?: ""
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,6 +50,7 @@ class MapDialog(val country: String) : DialogFragment() {
         initiateViews(binding)
         return binding.root
     }
+
 
     override fun onResume() {
         super.onResume()
@@ -56,17 +65,21 @@ class MapDialog(val country: String) : DialogFragment() {
     }
 
     override fun onCancel(dialog: DialogInterface) {
-        if(this::listener.isInitialized) listener.onCanceled()
+        if(this::listener.isInitialized) listener.onCanceled(this.dialog)
     }
 
     override fun setTargetFragment(fragment: Fragment?, requestCode: Int) {
-        super.setTargetFragment(fragment, requestCode)
         listener = fragment as DialogCallback
+        super.setTargetFragment(fragment, requestCode)
+    }
+
+    fun setListener(listener: DialogCallback){
+        this.listener = listener
     }
 
     private fun initiateViews(binding: MapDialogBinding) {
         search = binding.searchText.apply {
-            text = context.resources.getString(R.string.map_search, country)
+            text = context.resources.getString(R.string.map_search, selectedCountryName)
         }
         confirmButton = binding.confirmButton.apply {
             setOnClickListener {
@@ -128,8 +141,8 @@ class MapDialog(val country: String) : DialogFragment() {
 
                 override fun onAnimationEnd(p0: Animator?) {
                     when (button) {
-                        confirmButton -> if (this@MapDialog::listener.isInitialized) listener.onConfirmed()
-                        cancelButton -> if (this@MapDialog::listener.isInitialized) listener.onDismissed()
+                        confirmButton -> if (this@MapDialog::listener.isInitialized) listener.onConfirmed(dialog)
+                        cancelButton -> if (this@MapDialog::listener.isInitialized) listener.onDismissed(dialog)
                     }
                 }
 
@@ -145,9 +158,9 @@ class MapDialog(val country: String) : DialogFragment() {
     }
 
     interface DialogCallback {
-        fun onConfirmed()
-        fun onDismissed()
-        fun onCanceled()
+        fun onConfirmed(dialog: Dialog?)
+        fun onDismissed(dialog: Dialog?)
+        fun onCanceled(dialog: Dialog?)
     }
 }
 

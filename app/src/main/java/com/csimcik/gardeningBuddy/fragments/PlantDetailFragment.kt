@@ -24,6 +24,7 @@ import androidx.appcompat.widget.AppCompatRadioButton
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -40,6 +41,7 @@ import com.csimcik.gardeningBuddy.models.plantDetail.Image
 import com.csimcik.gardeningBuddy.models.plantDetail.PlantDetail
 import com.csimcik.gardeningBuddy.custom.ui.ColorsView
 import com.csimcik.gardeningBuddy.custom.ui.MeterView
+import com.csimcik.gardeningBuddy.models.plantDetail.Images
 import com.csimcik.gardeningBuddy.viewModels.PlantDetailViewModel
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
@@ -415,8 +417,8 @@ class PlantDetailFragment :
         view?.let { pic -> scaleUp(pic) }
     }
 
-    private fun getListOfImages(imageType: ImageType): List<Image?> {
-        var list: List<Image?>? = null
+    /*private fun getListOfImages(imageType: ImageType): Images?{
+        var list: Images? = null
         val images = viewModel.plantDetail?.let { plant ->
             plant.mainSpecies?.images
         }
@@ -429,7 +431,11 @@ class PlantDetailFragment :
                 ImageType.PLANT -> Log.d(TAG, "add plants")
             }
         }
-        return list ?: emptyList()
+        return list
+    }*/
+
+    private fun getImages(): Images?{
+       return  viewModel?.plantDetail?.let{plant-> plant.mainSpecies?.images}
     }
 
     private fun scaleUp(view: View) {
@@ -455,6 +461,13 @@ class PlantDetailFragment :
             }).start()
     }
 
+    private fun passBundle(type: ImageType): Bundle{
+        val bundle = Bundle()
+        bundle.putSerializable(GalleryDialog.IMAGE_TYPE, type)
+        bundle.putParcelable(GalleryDialog.IMAGES, getImages())
+        return bundle
+    }
+
     private fun scaleDown(view: View) {
         view.animate()
             .scaleX(1f)
@@ -469,22 +482,22 @@ class PlantDetailFragment :
                     val fragmentManager = parentFragmentManager
                     when (view) {
                         flowerImageButton -> {
-                            val type = ImageType.FLOWER
-                            galleryDialog = GalleryDialog(type, getListOfImages(type))
+                            galleryDialog = GalleryDialog()
+                            galleryDialog.arguments = passBundle(ImageType.FLOWER)
                             galleryDialog.setTargetFragment(this@PlantDetailFragment, 0)
-                            galleryDialog.show(fragmentManager, "")
+                            galleryDialog.show(fragmentManager, GalleryDialog.TAG)
                         }
                         foliageImageButton -> {
-                            val type = ImageType.FOLIAGE
-                            galleryDialog = GalleryDialog(type, getListOfImages(type))
+                            galleryDialog = GalleryDialog()
+                            galleryDialog.arguments = passBundle(ImageType.FOLIAGE)
                             galleryDialog.setTargetFragment(this@PlantDetailFragment, 0)
-                            galleryDialog.show(fragmentManager, "")
+                            galleryDialog.show(fragmentManager, GalleryDialog.TAG)
                         }
                         fruitAndSeedImageButton -> {
-                            val type = ImageType.FRUIT
-                            galleryDialog = GalleryDialog(type, getListOfImages(type))
+                            galleryDialog = GalleryDialog()
+                            galleryDialog.arguments = passBundle(ImageType.FRUIT)
                             galleryDialog.setTargetFragment(this@PlantDetailFragment, 0)
-                            galleryDialog.show(fragmentManager, "")
+                            galleryDialog.show(fragmentManager, GalleryDialog.TAG)
                         }
                     }
                 }

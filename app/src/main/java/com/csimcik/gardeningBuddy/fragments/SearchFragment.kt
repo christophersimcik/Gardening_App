@@ -63,8 +63,10 @@ class SearchFragment : Fragment(), AutoSizeEditTextView.TextChangedCallback {
             }
             false
         }
+        showButtons(arrayOf(familyButton, distributionButton))
         return binding.root
     }
+
 
     override fun onTextChanged(string: String) {
         viewModel.search = string

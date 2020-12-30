@@ -1,5 +1,6 @@
 package com.csimcik.gardeningBuddy.fragments
 
+import android.app.Dialog
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.Color
@@ -15,6 +16,7 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -52,7 +54,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, MapDialog.DialogCallback,
 
     private val viewModel: MapViewModel by viewModels()
 
-    private lateinit var dialog: MapDialog
+    //   private lateinit var dialog: MapDialog
     private lateinit var overlay: MapOverlay
     private var googleMap: GoogleMap? = null
     private lateinit var googleMapView: MapView
@@ -121,6 +123,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, MapDialog.DialogCallback,
         super.onResume()
         canClick = true
         googleMapView.onResume()
+        (parentFragmentManager.findFragmentByTag(MapDialog.TAG) as MapDialog?)?.let{ it.setListener(this) }
     }
 
     override fun onPause() {
@@ -204,22 +207,23 @@ class MapFragment : Fragment(), OnMapReadyCallback, MapDialog.DialogCallback,
         googleMapView.onCreate(savedInstanceState)
     }
 
-    override fun onConfirmed() {
-        this.dialog.dismiss()
+    override fun onConfirmed(dialog: Dialog?) {
+        Log.d("map dialog", "confirm clicked")
+        dialog?.dismiss()
         canClick = true
         removePolygons(viewModel.country.value?.getPolygons())
         search()
     }
 
-    override fun onCanceled() {
-        this.dialog.dismiss()
+    override fun onCanceled(dialog: Dialog?) {
+        dialog?.dismiss()
         canClick = true
         removePolygons(viewModel.country.value?.getPolygons())
         showFab()
     }
 
-    override fun onDismissed() {
-        this.dialog.dismiss()
+    override fun onDismissed(dialog: Dialog?) {
+        dialog?.dismiss()
         canClick = true
         removePolygons(viewModel.country.value?.getPolygons())
         showFab()
@@ -255,7 +259,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, MapDialog.DialogCallback,
             viewModel.getProximalGeography(click ?: LatLng(0.0, 0.0))
             saveLocation(click)
             Handler(Looper.getMainLooper()).postDelayed({
-                if (!this::dialog.isInitialized || !dialog.isVisible) showFab()
+              //  if (!this::dialog.isInitialized || !dialog.isVisible) showFab()
             }, FAB_DURATION)
         }
     }
@@ -303,9 +307,11 @@ class MapFragment : Fragment(), OnMapReadyCallback, MapDialog.DialogCallback,
     private fun showDialog(geography: Country?) {
         geography?.let {
             Handler(Looper.getMainLooper()).postDelayed({
-                this.dialog = MapDialog(geography.name)
-                this.dialog.setTargetFragment(this, 0)
-                this.dialog.show(parentFragmentManager, "")
+                MapDialog().apply {
+                    this.setTargetFragment(this@MapFragment, 0)
+                    this.arguments = bundleOf(Pair(MapDialog.COUNTRY_NAME, geography.name))
+                    this.show(this@MapFragment.parentFragmentManager, MapDialog.TAG)
+                }
             }, 250L)
         }
     }
